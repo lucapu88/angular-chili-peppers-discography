@@ -1,0 +1,9 @@
+<div class="single-album-container" *ngIf="currentAlbum">
+  <img
+    class="album-poster"
+    [src]="currentAlbum.poster"
+    [alt]="currentAlbum.album + ' img'"
+  />
+  <p class="album-year">Anno: {{ currentAlbum.anno }}</p>
+  <p class="album-description">{{ currentAlbum.descrizione }}</p>
+</div>

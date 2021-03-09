@@ -1,0 +1,12 @@
+<div *ngIf="!isLoading && albums.length" class="discography-container">
+  <app-album-list [albumList]="albums"></app-album-list>
+</div>
+<app-error
+  *ngIf="statusError && !isLoading"
+  [errorType]="statusError"
+></app-error>
+<button *ngIf="!isLoading" class="reload-btn" (click)="loadAlbum()">
+  {{ 'Reload' | uppercase }}
+</button>
+
+<app-loader *ngIf="isLoading"></app-loader>

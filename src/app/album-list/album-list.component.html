@@ -1,12 +1,15 @@
-<div class="discography-container">
+<div class="albums-container">
   <ul class="album-list-container">
     <li
-      *ngFor="let album of albums"
+      *ngFor="let album of albumList"
       [class.selected]="album === selectedAlbum"
-      (click)="selectAlbum(album)"
+      (click)="selectedAlbum = album"
     >
       <p>{{ album.album | uppercase }}</p>
     </li>
   </ul>
-  <app-single-album></app-single-album>
+  <app-single-album
+    *ngIf="selectedAlbum"
+    [album]="selectedAlbum"
+  ></app-single-album>
 </div>

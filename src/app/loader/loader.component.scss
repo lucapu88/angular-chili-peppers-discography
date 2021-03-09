@@ -1,0 +1,21 @@
+.loader {
+  height: 550px;
+  width: 550px;
+  display: flex;
+  margin: auto;
+  text-align: center;
+  animation: rotation 3s infinite linear;
+  @media (max-width: 550px) {
+    margin-top: 20%;
+    height: 350px;
+    width: 350px;
+  }
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

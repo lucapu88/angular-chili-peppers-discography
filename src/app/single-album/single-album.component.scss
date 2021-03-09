@@ -13,11 +13,18 @@
   }
 
   .album-poster {
-    width: 400px;
+    width: 420px;
+    height: 420px;
     padding: 5%;
+    @media (max-width: 550px) {
+      width: 300px;
+      height: 300px;
+    }
   }
   .album-description {
     width: 400px;
+    max-height: 140px;
+    overflow-y: auto;
     @media (max-width: 850px) {
       padding-left: 50px;
       width: auto;

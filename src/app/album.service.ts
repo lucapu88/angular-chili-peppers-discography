@@ -6,11 +6,9 @@ import { Album } from './album.model';
   providedIn: 'root',
 })
 export class AlbumService {
-  public albumSubject$: BehaviorSubject<Album>;
+  public albumSubject$ = new BehaviorSubject<Album | null>(null);
 
-  constructor() {
-    this.albumSubject$ = new BehaviorSubject(null);
-  }
+  constructor() {}
 
   get AlbumSubject() {
     return this.albumSubject$;
@@ -18,7 +16,5 @@ export class AlbumService {
 
   setCurrentAlbum(album: Album) {
     this.albumSubject$.next(album);
-    // console.log('albumsubj', this.albumSubject$);
-    // console.log('aaaa', album);
   }
 }

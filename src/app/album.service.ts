@@ -1,20 +1,49 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { finalize, take } from 'rxjs/operators';
 import { Album } from './album.model';
+import { DiscographyService } from './discography.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AlbumService {
-  public albumSubject$ = new BehaviorSubject<Album | null>(null);
+  // public albumSubject$ = new BehaviorSubject<Album[]>([]);
+  public albumSubject$ = new BehaviorSubject<Album[] | null>(null);
+  public currentAlbum$ = new BehaviorSubject<string | undefined>('');
 
-  constructor() {}
+  isLoading = false;
+  statusError?: string;
 
-  get AlbumSubject() {
-    return this.albumSubject$;
+  constructor(private discographyservice: DiscographyService) {}
+
+  loadAlbumList() {
+    this.isLoading = true;
+    this.discographyservice
+      .getAlbumList()
+      .pipe(
+        take(1),
+        finalize(() => {
+          this.isLoading = false;
+        })
+      )
+      .subscribe(
+        (response) => {
+          this.albumSubject$.next(response);
+          this.statusError = undefined;
+        },
+        (error) => {
+          console.log('Errore: ', error);
+          this.statusError = error.status;
+          this.albumSubject$.next([]);
+        },
+        () => {
+          console.log('Lista caricata');
+        }
+      );
   }
 
-  setCurrentAlbum(album: Album) {
-    this.albumSubject$.next(album);
+  getCurrentAlbumName(value: string | undefined) {
+    this.currentAlbum$.next(value);
   }
 }

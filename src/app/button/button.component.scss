@@ -1,0 +1,18 @@
+@import '../../styles.scss';
+
+.reload-btn {
+  display: flex;
+  border-radius: $border-radius;
+  border: 2px solid $secondary-color;
+  color: $secondary-color;
+  background-color: $primary-color;
+  padding: 15px;
+  font-weight: bold;
+  margin-left: calc(50% - 50px);
+  &:hover {
+    border: 2px solid $primary-color;
+    background-color: $secondary-color;
+    color: $primary-color;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,10 @@
+.video-container {
+  display: flex;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .youtube-iframe {
+    margin-bottom: 2%;
+  }
+}

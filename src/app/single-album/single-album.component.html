@@ -1,5 +1,11 @@
-<div class="single-album-container" *ngIf="album">
-  <img class="album-poster" [src]="album.poster" [alt]="album.album + ' img'" />
-  <p class="album-year">Anno: {{ album.anno }}</p>
-  <p class="album-description">{{ album.descrizione }}</p>
-</div>
+<a routerLink="/video" *ngIf="album">
+  <div class="single-album-container">
+    <img
+      class="album-poster"
+      [src]="album.poster"
+      [alt]="album.album + ' img'"
+    />
+    <p class="album-year">Anno: {{ album.anno }}</p>
+    <p class="album-description">{{ album.descrizione }}</p>
+  </div>
+</a>

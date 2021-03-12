@@ -1,5 +1,7 @@
 @import '../../styles.scss';
-
+a {
+  text-decoration: none;
+}
 .single-album-container {
   display: flex;
   flex-direction: column;
@@ -7,6 +9,12 @@
   width: 50%;
   color: $text-color;
   font-size: 20px;
+  &:hover {
+    .album-poster {
+      -webkit-box-shadow: 2px 4px 27px 12px rgba(255, 255, 255, 0.76);
+      box-shadow: 2px 4px 27px 12px rgba(255, 255, 255, 0.76);
+    }
+  }
   @media (max-width: 850px) {
     width: 90%;
     padding: 20px;
@@ -16,6 +24,7 @@
     width: 420px;
     height: 420px;
     padding: 5%;
+
     @media (max-width: 550px) {
       width: 300px;
       height: 300px;

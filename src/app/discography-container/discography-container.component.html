@@ -1,12 +1,17 @@
-<div *ngIf="!isLoading && albums.length" class="discography-container">
-  <app-album-list [albumList]="albums"></app-album-list>
+<div
+  *ngIf="!albumService.isLoading && (albums$ | async)?.length"
+  class="discography-container"
+>
+  <app-album-list [albumList]="albums$ | async"></app-album-list>
 </div>
 <app-error
-  *ngIf="statusError && !isLoading"
-  [errorType]="statusError"
+  *ngIf="albumService.statusError && !albumService.isLoading"
+  [errorType]="albumService.statusError"
 ></app-error>
-<button *ngIf="!isLoading" class="reload-btn" (click)="loadAlbum()">
-  {{ 'Reload' | uppercase }}
-</button>
+<app-button
+  *ngIf="!albumService.isLoading"
+  (click)="loadAlbum()"
+  [text]="text"
+></app-button>
 
-<app-loader *ngIf="isLoading"></app-loader>
+<app-loader *ngIf="albumService.isLoading"></app-loader>

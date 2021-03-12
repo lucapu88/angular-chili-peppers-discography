@@ -1,4 +1,6 @@
 <h1 class="title">{{ title | uppercase }}</h1>
-<app-discography-container></app-discography-container>
-<p>Numero di album totali:</p>
+<app-discography-container
+  *ngIf="routerUrl !== '/video'"
+></app-discography-container>
+<app-total-albums *ngIf="routerUrl !== '/video'"></app-total-albums>
 <router-outlet></router-outlet>

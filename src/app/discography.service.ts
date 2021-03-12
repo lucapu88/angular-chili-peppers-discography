@@ -17,7 +17,9 @@ export class DiscographyService {
       switchMap(() =>
         this.httpClient
           .get<{ success: boolean; response: Album[] }>(
-            Math.random() > 0.5 ? this.urlTrue : this.urlFalse
+            //Math.random() > 0.5 ? this.urlTrue : this.urlFalse
+            this.urlTrue
+            //this.urlFalse
           )
           .pipe(map((httpRes) => httpRes.response))
       )

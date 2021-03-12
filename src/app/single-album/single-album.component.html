@@ -1,5 +1,10 @@
 <a routerLink="/video" *ngIf="album">
-  <div class="single-album-container">
+  <div
+    class="single-album-container"
+    mat-raised-button
+    matTooltip="WATCH A VIDEO"
+    matTooltipPosition="above"
+  >
     <img
       class="album-poster"
       [src]="album.poster"

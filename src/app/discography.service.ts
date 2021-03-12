@@ -10,6 +10,7 @@ import { Album } from './album.model';
 export class DiscographyService {
   constructor(private httpClient: HttpClient) {}
 
+  //l'utilizzo dell'interval e del pipe è a scopo esercitativo
   getAlbumList(url: string): Observable<Album[]> {
     return interval(2000).pipe(
       switchMap(() =>

@@ -13,7 +13,7 @@ import { Album } from '../album.model';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AlbumListComponent implements OnInit {
-  @Input() albumList?: Album[];
+  @Input() albumList?: Album[] | null;
   @Input() selectedAlbum?: Album;
   constructor() {}
 

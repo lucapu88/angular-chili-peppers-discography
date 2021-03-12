@@ -13,8 +13,9 @@ export class DiscographyContainerComponent implements OnInit {
   selectedAlbum?: Album;
   textTrue: string = 'Reload with ERROR';
   textFalse: string = 'Reload CORRECT';
-  urlTrue = 'https://prova1api.herokuapp.com/RedHotCHiliPeppersDiscography';
-  urlFalse = 'https://prova1api.herokuapp.com/RedHotCHiliPeppersDisco'; //per creare l'errore
+  urlTrue: string =
+    'https://prova1api.herokuapp.com/RedHotCHiliPeppersDiscography';
+  urlFalse: string = 'https://prova1api.herokuapp.com/RedHotCHiliPeppersDisco'; //per creare l'errore
 
   constructor(
     public albumService: AlbumService,

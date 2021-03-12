@@ -8,19 +8,13 @@ import { Album } from './album.model';
   providedIn: 'root',
 })
 export class DiscographyService {
-  urlTrue = 'https://prova1api.herokuapp.com/RedHotCHiliPeppersDiscography';
-  urlFalse = 'https://prova1api.herokuapp.com/RedHotCHiliPeppersDisco'; //per creare l'errore
   constructor(private httpClient: HttpClient) {}
 
-  getAlbumList(): Observable<Album[]> {
+  getAlbumList(url: string): Observable<Album[]> {
     return interval(2000).pipe(
       switchMap(() =>
         this.httpClient
-          .get<{ success: boolean; response: Album[] }>(
-            //Math.random() > 0.5 ? this.urlTrue : this.urlFalse
-            this.urlTrue
-            //this.urlFalse
-          )
+          .get<{ success: boolean; response: Album[] }>(url)
           .pipe(map((httpRes) => httpRes.response))
       )
     );

@@ -15,7 +15,7 @@ export class VideoComponent implements OnInit {
   currentAlbum: string | undefined;
   text: string = 'Torna agli album';
   url: any;
-  video: any = { id: 'yOYmdyaSOCg' };
+  video: any = { id: '' };
   baseUrl: string = 'https://www.youtube.com/embed/';
 
   constructor(
@@ -29,7 +29,6 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //console.log('current-album: ', this.currentAlbum);
     switch (this.currentAlbum) {
       case 'the red hot chili peppers':
         this.video.id = 'yOYmdyaSOCg';

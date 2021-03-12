@@ -9,9 +9,14 @@
   [errorType]="albumService.statusError"
 ></app-error>
 <app-button
-  *ngIf="!albumService.isLoading"
-  (click)="loadAlbum()"
-  [text]="text"
+  *ngIf="!albumService.isLoading && !albumService.statusError"
+  (click)="loadAlbum(urlFalse)"
+  [text]="textTrue"
+></app-button>
+<app-button
+  *ngIf="!albumService.isLoading && albumService.statusError"
+  (click)="loadAlbum(urlTrue)"
+  [text]="textFalse"
 ></app-button>
 
 <app-loader *ngIf="albumService.isLoading"></app-loader>

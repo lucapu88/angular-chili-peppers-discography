@@ -8,8 +8,8 @@ import { DiscographyService } from './discography.service';
   providedIn: 'root',
 })
 export class AlbumService {
-  // public albumSubject$ = new BehaviorSubject<Album[]>([]);
-  public albumSubject$ = new BehaviorSubject<Album[] | null>(null);
+  public albumSubject$ = new BehaviorSubject<Album[]>([]);
+  //public albumSubject$ = new BehaviorSubject<Album[] | null>(null);
   public currentAlbum$ = new BehaviorSubject<string | undefined>('');
 
   isLoading = false;
@@ -17,10 +17,10 @@ export class AlbumService {
 
   constructor(private discographyservice: DiscographyService) {}
 
-  loadAlbumList() {
+  loadAlbumList(url: string) {
     this.isLoading = true;
     this.discographyservice
-      .getAlbumList()
+      .getAlbumList(url)
       .pipe(
         take(1),
         finalize(() => {

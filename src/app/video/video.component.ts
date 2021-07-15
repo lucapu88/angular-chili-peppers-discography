@@ -15,7 +15,7 @@ export class VideoComponent implements OnInit {
   currentAlbum: string | undefined;
   text: string = 'Torna agli album';
   url: any;
-  video: any = { id: '' };
+  video: any = { id: 'TYYW_WwYHuM' };
   baseUrl: string = 'https://www.youtube.com/embed/';
 
   constructor(
@@ -29,43 +29,7 @@ export class VideoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    switch (this.currentAlbum) {
-      case 'the red hot chili peppers':
-        this.video.id = 'yOYmdyaSOCg';
-        break;
-      case 'Freaky Styley':
-        this.video.id = '3Z4JUqA_bKE';
-        break;
-      case 'The Uplift Mofo Party Plan':
-        this.video.id = 'a8DPkw5Nc64';
-        break;
-      case "Mother's Milk":
-        this.video.id = 'HZySqMlEuSQ';
-        break;
-      case 'Blood Sugar Sex Magik':
-        this.video.id = 'Mr_uHJPUlO8';
-        break;
-      case 'One Hot Minute':
-        this.video.id = 'vV8IAOojoAA';
-        break;
-      case 'Californication':
-        this.video.id = 'mzJj5-lubeM';
-        break;
-      case 'By the Way':
-        this.video.id = 'JnfyjwChuNU';
-        break;
-      case 'Stadium Arcadium':
-        this.video.id = 'oDNcL1VP3rY';
-        break;
-      case "I'm with You":
-        this.video.id = 'qOgFHMEJMeY';
-        break;
-      case 'The Getaway':
-        this.video.id = 'Q0oIoR9mLwc';
-        break;
-      default:
-        this.video.id = 'TYYW_WwYHuM';
-    }
+    this.takeVideo(this.currentAlbum);
     this.url = this.sanitizer.bypassSecurityTrustResourceUrl(
       this.baseUrl + this.video.id
     );
@@ -77,5 +41,24 @@ export class VideoComponent implements OnInit {
 
   goBack(): void {
     this.location.back();
+  }
+
+  takeVideo(currentAlbum: string | undefined): void {
+    const videos = {
+      'the red hot chili peppers': 'yOYmdyaSOCg',
+      'Freaky Styley': '3Z4JUqA_bKE',
+      'The Uplift Mofo Party Plan': 'a8DPkw5Nc64',
+      "Mother's Milk": 'HZySqMlEuSQ',
+      'Blood Sugar Sex Magik': 'Mr_uHJPUlO8',
+      'One Hot Minute': 'vV8IAOojoAA',
+      Californication: 'mzJj5-lubeM',
+      'By the Way': 'JnfyjwChuNU',
+      'Stadium Arcadium': 'oDNcL1VP3rY',
+      "I'm with You": 'qOgFHMEJMeY',
+      'The Getaway': 'Q0oIoR9mLwc',
+    };
+
+    this.video.id = videos[currentAlbum] ?? this.video.id;
+    return this.video.id;
   }
 }
